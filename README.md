@@ -27,6 +27,9 @@ To address these challenges, I developed a dynamic Power BI dashboard that integ
 
 🔹 Helps in understanding financial progress and patterns.
 
+![image](https://github.com/user-attachments/assets/ef29869d-7ece-4112-9ace-60aad6bee927)
+
+
 ### KPI Cards:
 
 🔹 Show key financial metrics:
@@ -41,6 +44,9 @@ To address these challenges, I developed a dynamic Power BI dashboard that integ
 
 🔹 Enables quick assessment of financial performance.
 
+![image](https://github.com/user-attachments/assets/3f4e5cb9-eee3-46e8-8677-13e1ea8b59ec)
+
+
 ### Donut Charts:
 
 🔹 Breakdown of Expense Components (e.g., House Rent, EMIs, Groceries, Shopping, Travel).
@@ -49,11 +55,17 @@ To address these challenges, I developed a dynamic Power BI dashboard that integ
 
 🔹 Helps in identifying where money is spent and saved.
 
+![image](https://github.com/user-attachments/assets/434acf79-a7ac-4fae-8948-e49f775a3d93)
+
+
 ### Matrix Table:
 
 🔹 Displays financial figures for each Type (Income, Expense, Savings, Target) across different years.
 
 🔹 Provides a year-wise financial summary for trend analysis.
+
+![image](https://github.com/user-attachments/assets/c53dbec1-74b0-48e1-aaca-dfc96b6f6e18)
+
 
 ## Tools & Technologies Used
 
