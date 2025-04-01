@@ -1,0 +1,51 @@
+Total_Value = SUM(FinData[Value])
+
+Expenses = CALCULATE([Total_Value], FinData[Type]="Expense")
+
+Income = CALCULATE([Total_Value], FinData[Type]="Income")
+
+Target = CALCULATE(SUM(FinData[Value]), FinData[Type]="Target")
+
+Savings = CALCULATE([Total_Value], FinData[Type]="Savings")
+
+Dynamic_Title = SELECTEDVALUE(Line_Selection_Table[Type])&" by Date"
+
+Expense_Monthly_Growth = 
+VAR val = CALCULATE([Monthly_Growth], FinData[Type]="Expense")
+RETURN IF(val=BLANK(),0,val)
+
+Income_Monthly_Growth = 
+VAR val = CALCULATE([Monthly_Growth], FinData[Type]="Income")
+RETURN IF(val=BLANK(),0,val)
+
+Expense_vs_Savings = DIVIDE([Savings],[Expenses])
+
+Expense% = DIVIDE([Expenses],[Income])
+
+Savings% = DIVIDE([Savings],[Income])
+
+Income_Change_MoM% = DIVIDE([Income],[Income_LastMonth])
+
+Income_LastMonth = CALCULATE([Income], PREVIOUSMONTH('FinData'[Date].[Date]))
+
+Line_Chart_Measure = var selected_val = SELECTEDVALUE(Line_Selection_Table[No])
+RETURN SWITCH(selected_val,1,[Expense%],2,[Income_Change_MoM%],3,[Savings%],4,[Target])
+
+Month-Yr (New Column) = FORMAT(FinData[Date], "MMM-yy")
+
+Monthly_Growth = DIVIDE([Monthly_Sale]-[PY_Month_Sales], [PY_Month_Sales])
+
+Savings_Monthly_Growth = 
+VAR val = CALCULATE([Monthly_Growth], FinData[Type]="Savings")
+RETURN IF(val=BLANK(),0,val)
+
+Monthly_Sale = VAR CY_Selected_Month = SELECTEDVALUE(Selected_Date[Month-Yr])
+RETURN
+CALCULATE(
+    [Total_Value],
+    FinData[Month-Yr] = CY_Selected_Month
+    )
+
+PY_Month_Sales = VAR PY_Month = PREVIOUSMONTH(Selected_Date[Date])
+RETURN
+CALCULATE([Total_Value], FinData[Date] = PY_Month)
